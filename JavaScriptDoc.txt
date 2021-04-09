@@ -20,3 +20,46 @@ arr1 = [1,2,3];
 arr2 = [...arr1];
 
 arr2.push(4)//1,2,3,4
+
+
+Angular life cycle hooks
+1)A component instance has a lifecycle that starts when Angular instantiates the component class and renders the component view along with its child views. The lifecycle continues with change detection, as Angular checks to see when data-bound properties change, and updates both the view and the component instance as needed. The lifecycle ends when Angular destroys the component instance and removes its rendered template from the DOM. Directives have a similar lifecycle, as Angular creates, updates, and destroys instances in the course of execution.
+
+2)You can respond to events in the lifecycle of a component or directive by implementing one or more of the lifecycle hook interfaces in the Angular core library. The hooks give you the opportunity to act on a component or directive instance at the appropriate moment, as Angular creates, updates, or destroys that instance.
+
+3)Each interface defines the prototype for a single hook method, whose name is the interface name prefixed with ng.For example, the OnInit interface has a hook method named ngOnInit(). If you implement this method in your component or directive class, Angular calls it shortly after checking the input properties for that component or directive for the first time.
+
+4)Angular Component Lifecycle Hooks
+Step 1:Import the Life Cycle Hooks interface
+import {OnInit} from '@angular/core';
+
+Step 2:Make the component class implement the Life Cycle Hook interface
+export class SimpleComponent implements OnInit
+
+Step 3:Write the implementation code for the life cycle interface method
+ngOnInit(){
+console.log('OnInit Life Cycle Hook');
+}
+
+5) => ngOnChanges - Executes, every time the value of an input property changes.The hook method receives a SimpleChanges object containing current and previous value.This is called before ngOninit.
+
+=> ngOnInit = Executes after the constructor and after ngOnChange hook for the firts time.It is most commonly used for component initialisation and retrieving data from database.
+
+=> ngOnDestroy = Executes just before angular destroys the component and generally used for performing cleanup.
+
+6)When monitoring the same property Angular recommends not to use ngOnChanges and ngDoCheck.Because if the the input property changes both the hooks could fire and execute heavy logic.
+
+7)ngDoCheck is called after ngOnChanges on every change detection run and immediately after ngOnInit on the first run.Avoid heavy logic here.
+8)ngAfterContentInit - Invoked after Angular performs any content projection into the component's view.(Content projection is a way to import HTML content from outside the component and insert that content
+into the component's template in a designated spot).This is mainly used if you are implementing the <ng-content> HTML tags and @ContentChild component properties.This is called once after the first ngDoCheck.
+
+9)ngAfterContentInitChecked - Runs after Angular checks the content projected into the current component.This is called after ngAfterContentInit and every subsequent ngDoCheck.Avoid putting heavy logic here.
+
+10)ngAfterViewInit - Runs after Angular initialises the component's views and child's views.This is the first time you will have access to the @ViewChild properties on your component.It is called once after 
+the first ngAfterContentChecked.
+
+11)ngAfterViewChecked - Runs after Angular checks the component's views and child views.This is called after ngAfterViewInit and every subsequent ngAfterContentChecked.
+
+12)ngOnDestroy - The cleanup hook that runs just before the component is destroyed.This is a great place to unsubscribe from  all your observables and detach any event handles you have to avoid memory leaks.
+
+
