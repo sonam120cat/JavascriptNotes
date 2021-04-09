@@ -1,0 +1,22 @@
+Spread Parameters
+For function calls:
+1)myFunction(...iterableObj); // pass all elements of iterableObj as arguments to function myFunction
+
+For array literals or strings:
+2)[...iterableObj, '4', 'five', 6]; // combine two arrays by inserting all elements from iterableObj
+
+For object literals (new in ECMAScript 2018):
+3)let objClone = { ...obj }; // pass all key:value pairs from an object 
+
+
+Rest Parameters
+=> Rest syntax looks like spread operartors but it is opposite of that
+=> Spread parameters expands an array into its elements.
+=> While rest parameters collects multiple elements and condenses them into a single element.
+
+
+Copy an array
+arr1 = [1,2,3];
+arr2 = [...arr1];
+
+arr2.push(4)//1,2,3,4
