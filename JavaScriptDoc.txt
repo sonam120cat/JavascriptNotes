@@ -61,5 +61,5 @@ the first ngAfterContentChecked.
 11)ngAfterViewChecked - Runs after Angular checks the component's views and child views.This is called after ngAfterViewInit and every subsequent ngAfterContentChecked.
 
 12)ngOnDestroy - The cleanup hook that runs just before the component is destroyed.This is a great place to unsubscribe from  all your observables and detach any event handles you have to avoid memory leaks.
-
+13)We cannot have more than one structural directive on a single element.
 
