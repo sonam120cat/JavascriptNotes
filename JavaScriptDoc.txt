@@ -62,4 +62,117 @@ the first ngAfterContentChecked.
 
 12)ngOnDestroy - The cleanup hook that runs just before the component is destroyed.This is a great place to unsubscribe from  all your observables and detach any event handles you have to avoid memory leaks.
 13)We cannot have more than one structural directive on a single element.
+--------------------------------------------JAVASCRIPT----------------------------
+1)Type(x) Values Result
+Number x has the same value as y (but not NaN) true
+String x and y are identical characters true
+Boolean x and y are both true or both false true
+Object x and y reference the same object true
+
+If x and y are different types, then the result is false.
+Let's see some examples:
+console.log('packt' === true); //false
+console.log('packt' === 'packt'); //true
+var person1 = {name:'John'};
+var person2 = {name:'John'};
+console.log(person1 === person2); //false, different objects
+
+2)A class can also contain functions. We can declare and use a function as the following
+code demonstrates:
+Book.prototype.printTitle = function(){
+ console.log(this.title);
+};
+book.printTitle();
+We can declare functions directly inside the class definition as well:
+function Book(title, pages, isbn){
+ this.title = title;
+ this.pages = pages;
+ this.isbn = isbn;
+ this.printIsbn = function(){
+ console.log(this.isbn);
+ }
+}
+book.printIsbn();
+In the prototype example, the printTitle function is going to be
+shared between all instances, and only one copy is going to be created.
+When we use class-based definition, as in the previous example, each
+instance will have its own copy of the functions. Using the prototype
+method saves memory and processing cost in regards to assigning
+the functions to the instance. However, you can only declare public
+functions and properties using the prototype method. With a classbased definition, you can declare private functions and properties
+and the other methods inside the class can also access them. You will
+notice in the examples of this book that we use a class-based definition
+(because we want to keep some properties and functions private). But,
+whenever possible, we should use the prototype method.
+
+3)=> The JavaScript array class also has a method called unshift, which inserts the
+values passed in the method's arguments at the start of the array:
+numbers.unshift(-2);
+numbers.unshift(-4, -3);
+=>To actually remove an element from the beginning of the array, we can use the shift
+method as follows:
+numbers.shift();
+ 
+4)We can use the splice method to remove an element from an array by simply
+specifying the position/index we would like to delete from and how many
+elements we would like to remove:
+numbers.splice(5,3);
+This code will remove three elements starting from index 5 of our array. This means
+numbers[5], numbers[6], and numbers[7] will be removed from the numbers array.
+The content of our array will be -3, -2, -1, 0, 1, 5, 6, 7, 8, 9, 10, 11, and 12 (as numbers
+2, 3, and 4 have been removed).
+
+Now, let's say we want to insert numbers 2 to 4 back into the array starting from
+position 5. We can again use the splice method to do this:
+numbers.splice(5,0,2,3,4);
+Chapter 2
+[ 37 ]
+The first argument of the method is the index we want to remove or insert elements
+from. The second argument is the number of elements we want to remove (in this
+case, we do not want to remove any, so we pass the value 0 (zero)). And the third
+argument (and onwards) are the values we would like to insert into the array
+(elements 2, 3, and 4). The output will be the values from -3 to 12 again.
+
+5)Method Description
+concat Joins multiple arrays and returns a copy of the joined arrays
+every Calls a function for every element of the array until false is
+returned
+filter Creates an array with each element that evaluates to true in the
+function provided
+forEach Executes a specific function on each element of the array
+join Joins all the array elements into a string
+indexOf Searches the array for specific elements and returns its position
+lastIndexOf Returns the last item in the array that matches the search criteria
+and returns its position
+map Creates a new array with the result of calling the specified function
+on each element of the array
+reverse Reverses the array so the last items become the first and vice versa
+slice Returns a new array from the specified index
+some Passes each element through the supplied function until true is
+returned
+sort Sorts the array alphabetically or by the supplied function
+toString Returns the array as a string
+valueOf Like the method toString, this returns the array as a string
+
+6)Joining multiple arrays
+Consider a scenario where you have different arrays and you need to join all of them
+into a single array. We could iterate each array and add each element to the final
+array. Fortunately, JavaScript already has a method that can do that for us, named
+the concat method:
+var zero = 0;
+var positiveNumbers = [1,2,3];
+var negativeNumbers = [-3,-2,-1];
+var numbers = negativeNumbers.concat(zero, positiveNumbers);
+We can pass as many arrays and objects/elements to this array as we desire. The
+arrays will be concatenated to the specified array in the order the arguments
+are passed to the method. In this example, zero will be concatenated to
+negativeNumbers, and then positiveNumbers will be concatenated to the resulting
+array. The output of the numbers array will be the values -3, -2, -1, 0, 1, 2, and 3.
+
+7)For accented characters, we can use the localeCompare method as well:
+var names2 = ['Maève', 'Maeve'];
+console.log(names2.sort(function(a, b){
+ return a.localeCompare(b);
+}));
+And the output will be ["Maeve", "Maève"].
 
