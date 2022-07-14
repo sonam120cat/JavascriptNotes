@@ -176,3 +176,51 @@ console.log(names2.sort(function(a, b){
 }));
 And the output will be ["Maeve", "Maève"].
 
+8)this.sizeLegacy = function(){
+var count = 0;
+for(var prop in items) { //{5}
+if(items.hasOwnProperty(prop)) //{6}
+++count; //{7}
+}
+return count;
+};
+So, first we iterate through all the properties of the items object (line {5}) and
+check whether that property is really a property (so we do not count it more than
+once—line {6}). If positive, we increment the count variable (line {7}) and at the
+end of the method we return this number.
+We cannot simply use the for-in statement and iterate through the
+properties of the items object and increment the count variable
+value. We also need to use the has method (to verify that the items
+object has that property) because the object's prototype contains
+additional properties for the object as well (properties are inherited
+from the base JavaScript Object class, but it still has properties of
+the object, which are not used in this data structure).
+
+9)Set operations
+We can perform the following operations on sets:
+• Union: Given two sets, this returns a new set with the elements from both
+given sets
+• Intersection: Given two sets, this returns a new set with the elements that
+exist in both sets
+• Difference: Given two sets, this returns a new set with all elements that
+exist in the first set and do not exist in the second set
+• Subset: This confirms whether a given set is a subset of another set.
+
+10)Dictionaries
+As you have learned, a set is a collection of distinct elements (non-repeated
+elements). A dictionary is used to store [key, value] pairs, where the key is used
+to find a particular element. The dictionary is very similar to a set; a set stores a
+[key, key] collection of elements, and a dictionary stores a [key, value] collection of
+elements. A dictionary is also known as a map.
+
+Next, we need to declare the methods available for a map/dictionary:
+• set(key,value): This adds a new item to the dictionary.
+• remove(key): This removes the value from the dictionary using the key.
+• has(key): This returns true if the key exists in the dictionary and false
+otherwise.
+• get(key): This returns a specific value searched by the key.
+• clear(): This removes all the items from the dictionary.
+• size(): This returns how many elements the dictionary contains. It is
+similar to the length property of the array.
+• keys(): This returns an array of all the keys the dictionary contains.
+• values(): This returns an array of all the values of the dictionary.
